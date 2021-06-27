@@ -66,7 +66,7 @@ Json format:
 11. If the PLA type is a line or area, you are given options to pre-fill the node list. Input...
   * `r` for a regex search, 
   * `s` for a basic search,
-  * `e` to include all nodes,
+  * `a` to include all nodes,
   * `n` to include all nodes whose ID follow the pattern `<name><number>`,
   * blank or anything else not to prefill the list.
 12. Your text editor will then open. Modify the list until the order of nodes is correct.
