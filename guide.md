@@ -24,7 +24,7 @@ Json format:
 
 ## Plotting a PLA
 (aka component)
-You have to type this in manually; in the future I might do a builder for this
+You can either type this in manually, or use the PLA builder.
 Json format:
 ```
 {
@@ -42,15 +42,45 @@ Json format:
 
 ## Using the node builder
 1. Get Python version 3.8.0 - 3.9.5 (3.10 doesnt work)
-2. Run `pip install tile-renderer` in console
+2. Run `pip install --upgrade tile-renderer` in console. Make sure you have renderer v1.2 or up.
 3. `cd` to the directory where your node json file is in
 4. Run `renderer nodebuilder` or `python -m renderer builder`
-5. Create the node file, and write `{}` inside it. **This is important, or else running the nodebuilder will get you an error.**
+5. If it doesn't exist yet, reate the node file, and write `{}` inside it. **This is important, or else running the nodebuilder will get you an error.**
 6. Indicate the file to write to, eg. `XXX-nodes.json`
 7. Ingame, do F3+C, and paste it in the input. You are then prompted to title the node.
 8. Repeat this until you are done, then type `exit`.
 9. The new nodes should now be in the json file.
 10. Remember to save often by exiting and re-entering :D
+
+## Using the PLA builder
+1. Follow step 1 and 2 above. Minimum renderer version: v1.3.0.5
+2. Run `renderer plabuilder` or `python -m renderer plabuilder`
+3. If it doesn't exist yet, create the PLA file, and write `{}` inside it. **This is important, or else running the plabuilder will get you an error.**
+4. Indicate the PLA and node file to write to, eg. `XXX-pla.json`
+5. For the skin input, leave it blank.
+6. Write in an ID for a new PLA component. For example, `abc-exampleRoad`
+7. Write in the type for the component. For example, `localHighway`
+8. Write in the display name and description of the component.
+9. Write in the layer for the component. If blank, it is 0. The default is 0.
+10. If the PLA type is a point, it will prompt you for the ID of a single node. Input the name of the node.
+11. If the PLA type is a line or area, you are given options to pre-fill the node list. Input...
+  * `r` for a regex search, 
+  * `s` for a basic search,
+  * `e` to include all nodes,
+  * `n` to include all nodes whose ID follow the pattern `<name><number>`,
+  * blank or anything else not to prefill the list.
+12. Your text editor will then open. Modify the list until the order of nodes is correct.
+13. Once you are done, remember to save the file, and then close the editor.
+14. You will then be promoted to confirm the new component; press enter to confirm and write 'n' and press enter to cancel.
+15. Repeat 6-14 until you are done, then write 'exit' as the component name.
+16. The new PLAs should now be in the JSON file 
+17. Remember to save often by exiting and re-entering :D
+
+## Validating your JSON files
+1. Follow step 1 and 2 above. Minimum renderer version: v1.3.0.5
+2. If you want to validate a single file, run `python -m renderer validate -n <file>` for node files, and `python -n renderer validate -n <file> -p <file>` for PLA files.
+3. If you encounter a JSONDecodeError, there is something wrong with the **syntax** of the file.
+4. If you encounter a SchemaError, there is something wrong with the **structure** of the file.
 
 ## ID naming guidelines
 * **Remember namespace prefix!** Prefix them like this: `<namespace>-<node name>`, eg `enc-cabrilloAv`
